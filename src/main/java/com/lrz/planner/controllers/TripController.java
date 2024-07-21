@@ -2,9 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.lrz.planner.trip;
+package com.lrz.planner.controllers;
 
-import com.lrz.planner.trip.participants.ParticipantsService;
+import com.lrz.planner.entities.Trip;
+import com.lrz.planner.trip.TripCreateResponseDTO;
+import com.lrz.planner.trip.TripRepository;
+import com.lrz.planner.trip.TripRequestDTO;
+import com.lrz.planner.services.ParticipantsService;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +37,14 @@ public class TripController {
     
     
     @PostMapping
-    public ResponseEntity<TripCreateResponse> createTrip(@RequestBody TripRequest request){
+    public ResponseEntity<TripCreateResponseDTO> createTrip(@RequestBody TripRequestDTO request){
         Trip newTrip = new Trip(request);
         
         this.tripRepo.save(newTrip);
         
         this.particpantService.registersParticipantsToTrip(request.emails_to_invite(), newTrip.getId());
         
-        return ResponseEntity.ok(new TripCreateResponse(newTrip.getId()));
+        return ResponseEntity.ok(new TripCreateResponseDTO(newTrip.getId()));
     }
     
     @GetMapping("/{id}")

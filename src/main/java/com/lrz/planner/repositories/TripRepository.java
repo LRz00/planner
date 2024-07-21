@@ -4,6 +4,7 @@
  */
 package com.lrz.planner.trip;
 
+import com.lrz.planner.entities.Trip;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 

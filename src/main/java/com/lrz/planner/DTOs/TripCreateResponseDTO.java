@@ -4,12 +4,12 @@
  */
 package com.lrz.planner.trip;
 
-import java.util.List;
+import java.util.UUID;
 
 /**
  *
  * @author lara
  */
-public record TripRequest(String destination, String starts_at, String ends_at, List<String> emails_to_invite,
-        String owner_name, String owner_email) {
+public record TripCreateResponseDTO(UUID tripId) {
+
 }

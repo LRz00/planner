@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.lrz.planner.trip;
+package com.lrz.planner.entities;
 
+import com.lrz.planner.trip.TripRequestDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,7 +49,7 @@ public class Trip {
     private String ownerEmail;
     
     
-    public Trip(TripRequest request){
+    public Trip(TripRequestDTO request){
         this.destination = request.destination();
         this.isConfirmed = false;
         this.ownerEmail = request.owner_email();
